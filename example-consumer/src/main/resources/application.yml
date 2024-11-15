@@ -1,0 +1,4 @@
+rpc.name=rrpc
+rpc.version=2.0
+rpc.serverPort=8083
+rpc.mock=true

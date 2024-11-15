@@ -15,7 +15,7 @@
 
         <dependency>
             <groupId>com.goblin</groupId>
-            <artifactId>g-rpc-easy</artifactId>
+            <artifactId>g-rpc-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
