@@ -14,16 +14,11 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
- * HTTP 请求处理器
+ * HTTP 请求处理
  */
 public class HttpServerHandler implements Handler<HttpServerRequest> {
     @Override
     public void handle(HttpServerRequest request) {
-        // 反序列化请求为对象，并从请求对象中获取参数。
-        // 根据服务名称从本地注册器中获取到对应的服务实现类。
-        // 通过反射机制调用方法，得到返回结果。
-        // 对返回结果进行封装和序列化，并写入到响应中。
-
         // 指定序列化器
         final Serializer serializer = new JdkSerializer();
 
@@ -36,7 +31,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
             RpcRequest rpcRequest = null;
             try {
                 rpcRequest = serializer.deserialize(bytes, RpcRequest.class);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -52,7 +47,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
             try{
                 // 获取要调用的服务实现类，通过反射调用
                 Class<?> implClass = LocalRegistry.get(rpcRequest.getServiceName());
-                Method method = implClass.getMethod(rpcRequest.getMethodName());
+                Method method = implClass.getMethod(rpcRequest.getMethodName(), rpcRequest.getParameterTypes());
                 Object result = method.invoke(implClass.newInstance(), rpcRequest.getArgs());
 
                 // 将返回结果封装
