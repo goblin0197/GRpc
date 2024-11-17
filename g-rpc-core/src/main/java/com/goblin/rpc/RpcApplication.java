@@ -5,6 +5,10 @@ import com.goblin.rpc.constant.RpcConstant;
 import com.goblin.rpc.utils.ConfigUtils;
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * RPC 框架应用
+ * 相当于holder ， 存放了全局的配置信息 双检锁单例模式实现
+ */
 @Slf4j
 public class RpcApplication {
     private static volatile RpcConfig rpcConfig;
