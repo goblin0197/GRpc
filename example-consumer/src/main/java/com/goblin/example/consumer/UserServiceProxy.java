@@ -4,10 +4,12 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
 import com.goblin.example.common.model.User;
 import com.goblin.example.common.service.UserService;
+import com.goblin.rpc.RpcApplication;
 import com.goblin.rpc.model.RpcRequest;
 import com.goblin.rpc.model.RpcResponse;
 import com.goblin.rpc.serializer.JdkSerializer;
 import com.goblin.rpc.serializer.Serializer;
+import com.goblin.rpc.serializer.SerializerFactory;
 
 /**
  * 静态代理
@@ -17,7 +19,7 @@ public class UserServiceProxy implements UserService {
     @Override
     public User getUser(User user) {
         // 指定序列化器
-        Serializer serializer = new JdkSerializer();
+        Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         RpcRequest rpcRequest = RpcRequest.builder()
                 .serviceName(UserService.class.getName())

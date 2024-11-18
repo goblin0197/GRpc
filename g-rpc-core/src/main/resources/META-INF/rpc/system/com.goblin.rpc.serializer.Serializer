@@ -1,0 +1,4 @@
+jdk=com.goblin.rpc.serializer.JdkSerializer
+hessian=com.goblin.rpc.serializer.HessianSerializer
+json=com.goblin.rpc.serializer.JsonSerializer
+kryo=com.goblin.rpc.serializer.KryoSerializer

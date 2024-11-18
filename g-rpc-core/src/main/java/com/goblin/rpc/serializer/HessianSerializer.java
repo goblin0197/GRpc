@@ -12,6 +12,13 @@ import java.io.IOException;
  * Hessian 序列化器
  */
 public class HessianSerializer implements  Serializer{
+    /**
+     * 序列化
+     * @param object
+     * @param <T>
+     * @return
+     * @throws IOException
+     */
     @Override
     public <T> byte[] serialize(T object) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -21,6 +28,14 @@ public class HessianSerializer implements  Serializer{
         return byteArrayOutputStream.toByteArray();
     }
 
+    /**
+     * 反序列化
+     * @param bytes
+     * @param clazz
+     * @param <T>
+     * @return
+     * @throws IOException
+     */
     @Override
     public <T> T deserialize(byte[] bytes, Class<T> clazz) throws IOException {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);

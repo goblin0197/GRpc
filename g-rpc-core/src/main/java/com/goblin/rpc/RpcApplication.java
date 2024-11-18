@@ -18,6 +18,9 @@ public class RpcApplication {
         log.info("rpc init, config = {}", newRpcConfig.toString());
     }
 
+    /**
+     * 初始化配置
+     */
     public static void init(){
         RpcConfig newRpcConfig ;
         try {
@@ -28,6 +31,10 @@ public class RpcApplication {
         init(newRpcConfig);
     }
 
+    /**
+     * 读取配置
+     * @return
+     */
     public static RpcConfig getRpcConfig(){
         if(rpcConfig == null){
             synchronized (RpcApplication.class){
