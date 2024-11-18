@@ -39,8 +39,10 @@ public class ConfigUtils {
                 tmp.append(postfix);
                 Props props = new Props(tmp.toString());
                 props.autoLoad(true);
+                T t = props.toBean(tClass, prefix);
                 System.out.println("配置文件路径："+tmp);
-                return props.toBean(tClass,prefix);
+                System.out.println("配置对象："+t.toString());
+                return t;
             }catch (Exception e){
 
             }

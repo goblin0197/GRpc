@@ -22,9 +22,9 @@ public class HessianSerializer implements  Serializer{
     @Override
     public <T> byte[] serialize(T object) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        Hessian2Output hessianOutput = new Hessian2Output(byteArrayOutputStream);
+        HessianOutput hessianOutput = new HessianOutput(byteArrayOutputStream);
         hessianOutput.writeObject(object);
-        hessianOutput.close();
+//        hessianOutput.close();
         return byteArrayOutputStream.toByteArray();
     }
 

@@ -9,7 +9,7 @@ public interface UserService {
      */
     User getUser(User user);
 
-    default short getNumber(){
-        return 1;
+    default Short getNumber(){
+        return (short) 1;
     }
 }
